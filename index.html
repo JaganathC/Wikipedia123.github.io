@@ -2,89 +2,14 @@
 
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-    <link rel="stylesheet" href="style.css" >
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/5f59ca6ad3.js" crossorigin="anonymous"></script>
-    
+    <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
-    <script type="text/javascript">const prompt = require('prompt-sync')();
-let searchInputEl = document.getElementById("searchInput");
-let searchResultsEl = document.getElementById("searchResults");
-let spinner = document.getElementById("spinner");
-
-function create(result) {
-    let {
-        title,
-        link,
-        description
-    } = result;
-    //creating Result Item --Div
-    let res = document.createElement("div");
-    res.classList.add("result-item");
-    searchResultsEl.appendChild(res);
-
-    //Creating Title Element --Anchor
-    let resTitleEl = document.createElement("a");
-    resTitleEl.classList.add("result-item");
-    resTitleEl.textContent = title;
-    resTitleEl.href = link;
-    resTitleEl.target = "_blank";
-    res.appendChild(resTitleEl);
-    //Creating Break Element 
-    let titleBreak = document.createElement("br");
-    res.appendChild(titleBreak);
-    //Creating URL Element --Anchor
-    let urlEl = document.createElement("a");
-    urlEl.classList.add("result-url");
-    urlEl.href = link;
-    urlEl.target = "_blank";
-    urlEl.textContent = link;
-    res.appendChild(urlEl);
-
-    //Creating Break Element 
-    let lineBr = document.createElement("br");
-    res.appendChild(lineBr);
-    //Creating Description Element--PARAGRAPH
-    let paraEl = document.createElement("p");
-    paraEl.classList.add("line-description");
-    paraEl.textContent = description;
-    res.appendChild(paraEl);
-}
-
-function displayResults(searchResults) {
-    spinner.classList.toggle("d-none");
-    for (let result of searchResults) {
-        create(result);
-    }
-}
-
-function search(event) {
-    if (event.key === "Enter") {
-        searchResultsEl.textContent = "";
-        spinner.classList.toggle("d-none");
-        let searchInp = searchInputEl.value;
-        let url = "https://apis.ccbp.in/wiki-search?search=" + searchInp;
-        let options = {
-            method: "GET"
-        }
-        fetch(url, options)
-            .then(function(response) {
-                return response.json();
-
-            })
-            .then(function(jsonData) {
-                let {
-                    search_results
-                } = jsonData;
-                displayResults(search_results);
-            });
-    }
-}
-searchInputEl.addEventListener("keydown", search);</script>
     <div class="main-container">
         <div class="wiki-search-header text-center">
             <img class="wiki-logo" src="https://nkb-backend-otg-media-static.s3.ap-south-1.amazonaws.com/ccbp-dynamic-webapps/wiki-logo-img.png" />
@@ -100,7 +25,7 @@ searchInputEl.addEventListener("keydown", search);</script>
         </div>
         <div class="search-results" id="searchResults"></div>
     </div>
-    <script src="Wikipedia.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
